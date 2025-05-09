@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block title %}Netherworld Gateway - Haunted Portfolio{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Welcome to your Netherworld Gateway, {{ user.username }}</h1>
+
+<!-- User's own stats -->
+<div class="card mb-4 border-danger">
+    <div class="card-header bg-dark text-danger">
+        <h3>Your Dark Powers</h3>
+    </div>
+    <div class="card-body">
+        <p>Total Projects in your Collection: <span class="badge bg-danger">{{ projects|length }}</span></p>
+        <div class="d-flex justify-content-between">
+            <a href="{{ url_for('new_project') }}" class="btn btn-success">Conjure New Project</a>
+            <a href="{{ url_for('view_profile') }}" class="btn btn-primary">View Your Dark Essence</a>
+        </div>
+    </div>
+</div>
+
+<!-- User Management Section -->
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Other Souls in the Netherworld</h2>
+    <div>
+        {% if 'original_user_id' in session %}
+        <form action="{{ url_for('return_to_self') }}" method="POST" class="d-inline">
+            <button type="submit" class="btn btn-warning me-2">
+                <i class="fas fa-user-circle"></i> Return to Your Form
+            </button>
+        </form>
+        {% endif %}
+        <a href="{{ url_for('add_user') }}" class="btn btn-danger">
+            <i class="fas fa-skull"></i> Summon New Soul
+        </a>
+    </div>
+</div>
+<p class="text-muted">Visit their domains by following the portals below</p>
+
+<!-- Users Portal Section -->
+<div class="row">
+    {% for other_user in all_users %}
+        {% if other_user.id != user.id %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 user-card">
+                <div class="card-header">
+                    <h4>{{ other_user.username }}</h4>
+                </div>
+                <div class="card-body">
+                    <p>Projects: <span class="badge bg-danger">{{ other_user.projects|length }}</span></p>
+                    
+                    {% if other_user.about_me %}
+                    <p class="text-muted small">{{ other_user.about_me|truncate(50) }}</p>
+                    {% endif %}
+                    
+                    <div class="portal-buttons">
+                        <a href="{{ url_for('user_profile', user_id=other_user.id) }}" class="btn btn-sm btn-outline-danger mb-1 w-100">
+                            <i class="fas fa-skull"></i> View Dark Essence
+                        </a>
+                        <a href="{{ url_for('user_sanctuary', user_id=other_user.id) }}" class="btn btn-sm btn-outline-primary mb-1 w-100">
+                            <i class="fas fa-dungeon"></i> Enter Sanctuary
+                        </a>
+                        <form action="{{ url_for('impersonate_user', user_id=other_user.id) }}" method="POST" class="mb-1">
+                            <button type="submit" class="btn btn-sm btn-outline-warning w-100" 
+                                    onclick="return confirm('Are you sure you wish to possess the soul of {{ other_user.username }}?');">
+                                <i class="fas fa-ghost"></i> Possess Soul
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="card-footer text-muted">
+                    <small>Tech Stack: {% if other_user.tech_stack %}{{ other_user.tech_stack|truncate(30) }}{% else %}Unknown powers{% endif %}</small>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    {% endfor %}
+</div>
+
+<style>
+    .user-card {
+        transition: all 0.3s ease;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .user-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 15px rgba(138, 3, 3, 0.6);
+    }
+    
+    .portal-buttons .btn {
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.8rem;
+    }
+    
+    .portal-buttons .btn:hover {
+        transform: scale(1.05);
+        background-color: #500000;
+        border-color: #8a0303;
+        color: #e0e0dc;
+    }
+</style>
+{% endblock %}

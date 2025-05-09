@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+
+{% block title %}Transform Your Essence - Haunted Portfolio{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card border-danger">
+            <div class="card-header bg-dark text-danger">
+                <h2>Transform Your Dark Essence</h2>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="mb-4">
+                        <h3 class="text-danger">Personal Secrets</h3>
+                        
+                        <div class="mb-3">
+                            <label for="full_name" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="full_name" name="full_name" value="{{ user.full_name }}">
+                            <small class="form-text text-muted">Your mortal designation, as it appears in human records.</small>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}" readonly>
+                            <small class="form-text text-muted">Your digital summoning address (cannot be changed).</small>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="student_id" class="form-label">Student ID</label>
+                            <input type="text" class="form-control" id="student_id" name="student_id" value="{{ user.student_id }}">
+                            <small class="form-text text-muted">Your identification number in the mortal academic realm.</small>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="section" class="form-label">Section</label>
+                            <input type="text" class="form-control" id="section" name="section" value="{{ user.section }}">
+                            <small class="form-text text-muted">Your assigned chamber in the academic underworld.</small>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="about_me" class="form-label">Forbidden Knowledge</label>
+                            <textarea class="form-control" id="about_me" name="about_me" rows="4" placeholder="Share your darkest secrets and history...">{{ user.about_me }}</textarea>
+                            <small class="form-text text-muted">Tell the world about your unholy origins and cursed journey.</small>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="tech_stack" class="form-label">Arcane Powers</label>
+                            <textarea class="form-control" id="tech_stack" name="tech_stack" rows="3" placeholder="List your dark abilities and skills...">{{ user.tech_stack }}</textarea>
+                            <small class="form-text text-muted">The magical arts and technologies you possess.</small>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h3 class="text-danger">Mortal Details</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="age" class="form-label">Age</label>
+                                    <input type="text" class="form-control" id="age" name="age" placeholder="Your mortal years" value="{{ user.age }}">
+                                    <small class="form-text text-muted">The count of cycles your mortal shell has endured.</small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="gender" class="form-label">Gender</label>
+                                    <input type="text" class="form-control" id="gender" name="gender" value="{{ user.gender }}">
+                                    <small class="form-text text-muted">Your mortal vessel's manifestation form.</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="birthdate" class="form-label">Date of Summoning</label>
+                                    <input type="text" class="form-control" id="birthdate" name="birthdate" placeholder="YYYY-MM-DD" value="{{ user.birthdate }}">
+                                    <small class="form-text text-muted">When your spirit was called forth into this realm.</small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="occupation" class="form-label">Mortal Occupation</label>
+                                    <input type="text" class="form-control" id="occupation" name="occupation" placeholder="What brings you income in the mortal realm?" value="{{ user.occupation }}">
+                                    <small class="form-text text-muted">The daily labor that sustains your earthly existence.</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="location" class="form-label">Haunting Grounds</label>
+                            <input type="text" class="form-control" id="location" name="location" placeholder="City, Country" value="{{ user.location }}">
+                            <small class="form-text text-muted">The territory you currently haunt in the mortal realm.</small>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Full Address</label>
+                            <textarea class="form-control" id="address" name="address" rows="2">{{ user.address }}</textarea>
+                            <small class="form-text text-muted">The exact location of your mortal dwelling or resting place.</small>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h3 class="text-danger">Communication Glyphs</h3>
+                        <div class="mb-3">
+                            <label for="contact_info" class="form-label">Communion Methods</label>
+                            <textarea class="form-control" id="contact_info" name="contact_info" rows="2" placeholder="How can others contact your spirit?">{{ user.contact_info }}</textarea>
+                            <small class="form-text text-muted">Email, phone, or other contact methods.</small>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="social_media" class="form-label">Ethereal Networks</label>
+                            <textarea class="form-control" id="social_media" name="social_media" rows="2" placeholder="Your spectral presence on other platforms...">{{ user.social_media }}</textarea>
+                            <small class="form-text text-muted">Links to your social media or other platforms.</small>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between">
+                        <a href="{{ url_for('view_profile') }}" class="btn btn-secondary">Cancel Transformation</a>
+                        <button type="submit" class="btn btn-danger">Complete the Ritual</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    textarea, input {
+        background-color: #1a1a1a !important;
+        color: #e0e0dc !important;
+        border: 1px solid #500000 !important;
+    }
+    
+    textarea:focus, input:focus {
+        box-shadow: 0 0 0 0.25rem rgba(138, 3, 3, 0.25) !important;
+        border-color: #8a0303 !important;
+    }
+    
+    .form-label {
+        color: #b8b86b;
+    }
+    
+    h3.text-danger {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        border-bottom: 1px solid #500000;
+        padding-bottom: 8px;
+        margin-bottom: 16px;
+    }
+    
+    .form-text {
+        color: #8a8a8a !important;
+        font-style: italic;
+        margin-top: 5px;
+        font-size: 0.85rem;
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}{{ user.username }}'s Dark Essence{% endblock %}
+
+{% block content %}
+<div class="card border-danger mb-4">
+    <div class="card-header bg-dark text-danger d-flex justify-content-between align-items-center">
+        <h1 class="mb-0">{{ user.username }}'s Dark Essence</h1>
+        <a href="{{ url_for('dashboard') }}" class="btn btn-outline-danger">Return to Gateway</a>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="profile-section mb-4">
+                    <h3 class="text-danger">Forbidden Knowledge</h3>
+                    <div class="dark-box">
+                        {% if user.about_me %}
+                            <p>{{ user.about_me }}</p>
+                        {% else %}
+                            <p class="text-muted">This soul keeps their secrets hidden...</p>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <div class="profile-section mb-4">
+                    <h3 class="text-danger">Unholy Talents</h3>
+                    <div class="dark-box">
+                        {% if user.tech_stack %}
+                            <p>{{ user.tech_stack }}</p>
+                        {% else %}
+                            <p class="text-muted">Their arcane abilities remain hidden...</p>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <div class="profile-section mb-4">
+                    <h3 class="text-danger">Mortal Occupation</h3>
+                    <div class="dark-box">
+                        {% if user.occupation %}
+                            <p>{{ user.occupation }}</p>
+                        {% else %}
+                            <p class="text-muted">Their earthly labor remains a mystery...</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="profile-section mb-4">
+                    <h3 class="text-danger">Origin Details</h3>
+                    <div class="dark-box">
+                        <p><strong>Date of Summoning:</strong> 
+                            {% if user.birthdate %}
+                                {{ user.birthdate }}
+                            {% else %}
+                                <span class="text-muted">Unknown</span>
+                            {% endif %}
+                        </p>
+                        <p><strong>Haunting Grounds:</strong> 
+                            {% if user.location %}
+                                {{ user.location }}
+                            {% else %}
+                                <span class="text-muted">Wandering</span>
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="profile-section mb-4">
+                    <h3 class="text-danger">Communion Methods</h3>
+                    <div class="dark-box">
+                        {% if user.contact_info %}
+                            <p>{{ user.contact_info }}</p>
+                        {% else %}
+                            <p class="text-muted">No means of contact revealed...</p>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <div class="profile-section mb-4">
+                    <h3 class="text-danger">Ethereal Networks</h3>
+                    <div class="dark-box">
+                        {% if user.social_media %}
+                            <p>{{ user.social_media }}</p>
+                        {% else %}
+                            <p class="text-muted">Their spectral connections remain hidden...</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .dark-box {
+        background-color: rgba(40, 40, 40, 0.7);
+        border-left: 3px solid #8a0303;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .profile-section h3 {
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+</style>
+{% endblock %}

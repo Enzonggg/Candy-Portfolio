@@ -1,0 +1,515 @@
+/* Candy Theme for Student Portfolio System */
+
+/* Font imports - Sweet Candy Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+
+:root {
+    --candy-pink: #ff70a6;
+    --bubblegum: #ff9770;
+    --lemon-drop: #ffd670;
+    --mint-green: #70d6ff;
+    --grape: #bf9eff;
+    --licorice: #3a3042;
+    --marshmallow: #fff0f3;
+    --chocolate: #6b4b3e;
+    --candy-red: #ff5c8d;
+    --cotton-candy: #ffcee4;
+}
+
+/* Body with candy pattern background */
+body {
+    background-color: var(--marshmallow);
+    background-image: 
+        radial-gradient(var(--candy-pink) 1px, transparent 1px),
+        radial-gradient(var(--mint-green) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: 0 0, 15px 15px;
+    color: var(--licorice);
+    font-family: 'Baloo 2', cursive;
+    line-height: 1.6;
+    min-height: 100vh;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    transition: all 0.5s ease;
+}
+
+/* Sweet candy-style headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Luckiest Guy', cursive;
+    color: var(--candy-pink);
+    text-shadow: 3px 3px 0px var(--bubblegum);
+    letter-spacing: 1px;
+    position: relative;
+}
+
+h1::after, h2::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(90deg, 
+        var(--candy-pink), var(--bubblegum), 
+        var(--lemon-drop), var(--mint-green), 
+        var(--grape), var(--candy-pink));
+    border-radius: 10px;
+}
+
+/* Navigation bar that looks like candy stripes */
+.navbar {
+    background: repeating-linear-gradient(
+        45deg,
+        var(--candy-pink),
+        var(--candy-pink) 10px,
+        var(--cotton-candy) 10px,
+        var(--cotton-candy) 20px
+    ) !important;
+    border-bottom: 5px solid var(--bubblegum);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.6rem;
+    color: white !important;
+    text-shadow: 2px 2px 0px var(--candy-red), 4px 4px 0px var(--licorice);
+}
+
+.nav-link {
+    color: white !important;
+    font-family: 'Fredoka One', cursive;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.nav-link:hover {
+    color: var(--lemon-drop) !important;
+    transform: scale(1.1) rotate(-2deg);
+}
+
+.dropdown-menu {
+    background-color: var(--cotton-candy);
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.dropdown-item {
+    color: var(--licorice);
+    font-family: 'Baloo 2', cursive;
+    font-weight: bold;
+}
+
+.dropdown-item:hover {
+    background-color: var(--candy-pink);
+    color: white;
+}
+
+/* Cards styled like candy wrappers */
+.card {
+    background-color: white;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05), 
+                0 6px 6px rgba(0, 0, 0, 0.1),
+                0 0 0 5px var(--mint-green),
+                0 0 0 10px white;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+
+.card:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1), 
+                0 10px 10px rgba(0, 0, 0, 0.05),
+                0 0 0 5px var(--candy-pink),
+                0 0 0 10px white;
+}
+
+.card-header {
+    background-color: var(--grape);
+    color: white;
+    border-bottom: 5px dashed white;
+    font-family: 'Fredoka One', cursive;
+}
+
+.card-footer {
+    background-color: var(--lemon-drop);
+    border-top: 5px dashed white;
+}
+
+/* Sweet buttons */
+.btn {
+    border-radius: 50px;
+    font-family: 'Fredoka One', cursive;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+.btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transition: all 0.5s ease;
+}
+
+.btn:hover::after {
+    left: 100%;
+}
+
+.btn-primary {
+    background-color: var(--mint-green);
+    border: none;
+    color: var(--licorice);
+}
+
+.btn-primary:hover {
+    background-color: var(--mint-green);
+    opacity: 0.9;
+}
+
+.btn-secondary {
+    background-color: var(--grape);
+    border: none;
+}
+
+.btn-danger {
+    background-color: var(--candy-red);
+    border: none;
+}
+
+.btn-success {
+    background-color: #72d6a0;
+    border: none;
+    color: var(--licorice);
+}
+
+/* Form elements */
+.form-control {
+    border: 3px solid var(--cotton-candy);
+    border-radius: 15px;
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+    background-color: white;
+}
+
+.form-control:focus {
+    border-color: var(--candy-pink);
+    box-shadow: 0 0 0 0.25rem rgba(255, 112, 166, 0.25);
+}
+
+.form-label {
+    color: var(--candy-pink);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Tables with candy striping */
+.table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.table thead th {
+    background-color: var(--candy-pink);
+    color: white;
+    border: none;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: var(--cotton-candy);
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+    background-color: white;
+}
+
+.table-hover tbody tr:hover {
+    background-color: var(--lemon-drop);
+}
+
+/* Alerts styled like candy notes */
+.alert {
+    border-radius: 15px;
+    border: 5px dashed white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    font-family: 'Comic Neue', cursive;
+    font-weight: bold;
+}
+
+.alert-info {
+    background-color: var(--mint-green);
+    color: var(--licorice);
+}
+
+.alert-success {
+    background-color: #72d6a0;
+    color: var(--licorice);
+}
+
+.alert-danger {
+    background-color: var(--candy-red);
+    color: white;
+}
+
+.alert-warning {
+    background-color: var(--lemon-drop);
+    color: var(--licorice);
+}
+
+/* Sweet footer */
+.footer-horror {
+    background-color: var(--candy-pink) !important;
+    color: white;
+    font-family: 'Fredoka One', cursive;
+    border-top: 10px dotted white;
+    position: relative;
+}
+
+.footer-horror::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background-image: radial-gradient(circle at 10px -5px, transparent 12px, white 13px, white 20px);
+    background-size: 20px 20px;
+    background-repeat: repeat-x;
+}
+
+.footer-text {
+    display: block;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 0px var(--bubblegum);
+}
+
+.footer-tagline {
+    display: block;
+    font-family: 'Baloo 2', cursive;
+    font-size: 1rem;
+}
+
+/* Project images with candy border */
+.project-detail-img {
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1),
+                0 0 0 5px var(--mint-green),
+                0 0 0 10px white,
+                0 0 0 15px var(--candy-pink);
+    transition: all 0.3s ease;
+}
+
+.project-detail-img:hover {
+    transform: scale(1.02);
+}
+
+/* Badge styling */
+.badge {
+    border-radius: 50px;
+    padding: 5px 10px;
+    font-family: 'Baloo 2', cursive;
+    font-weight: normal;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.badge-primary, .bg-primary {
+    background-color: var(--mint-green) !important;
+    color: var(--licorice);
+}
+
+.badge-secondary, .bg-secondary {
+    background-color: var(--grape) !important;
+}
+
+.badge-success, .bg-success {
+    background-color: #72d6a0 !important;
+    color: var(--licorice);
+}
+
+.badge-danger, .bg-danger {
+    background-color: var(--candy-red) !important;
+}
+
+.badge-warning, .bg-warning {
+    background-color: var(--lemon-drop) !important;
+    color: var(--licorice);
+}
+
+.badge-info, .bg-info {
+    background-color: var(--mint-green) !important;
+    color: var(--licorice);
+}
+
+/* Dark box for profile sections - candy styled */
+.dark-box {
+    background-color: white;
+    border-radius: 15px;
+    border: 5px solid var(--cotton-candy);
+    padding: 15px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Sweet scrollbar */
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-track {
+    background: linear-gradient(90deg, var(--cotton-candy) 0%, white 100%);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--candy-pink) 0%, var(--bubblegum) 100%);
+    border-radius: 10px;
+    border: 3px solid white;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--candy-red);
+}
+
+/* Selection styling */
+::selection {
+    background-color: var(--candy-pink);
+    color: white;
+}
+
+/* Animated candy elements */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Add candy icons to headers */
+h1::before, h2::before {
+    content: "🍭";
+    margin-right: 10px;
+    display: inline-block;
+    animation: spin 10s linear infinite;
+}
+
+h3::before {
+    content: "🍬";
+    margin-right: 10px;
+    display: inline-block;
+    animation: bounce 2s ease infinite;
+}
+
+/* Cursors */
+body {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><circle cx='12' cy='12' r='12' fill='%23ff70a6' opacity='0.6'/></svg>"), auto;
+}
+
+a, button, .btn, input, textarea, select {
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><circle cx='12' cy='12' r='12' fill='%2370d6ff' opacity='0.6'/></svg>"), pointer;
+}
+
+/* Sweet candy animations for user cards */
+.user-card:hover {
+    animation: bounce 0.5s ease;
+}
+
+.portal-buttons .btn:hover {
+    background-color: var(--candy-pink) !important;
+    border-color: var(--bubblegum) !important;
+    color: white !important;
+}
+
+/* Project cards candy styling */
+.project-card {
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    border: none;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.project-card .card-img-top {
+    transition: all 0.5s ease;
+}
+
+.project-card:hover .card-img-top {
+    transform: scale(1.05);
+}
+
+/* Profile section candy styling */
+.profile-section h3 {
+    color: var(--candy-pink);
+    text-shadow: 2px 2px 0px var(--bubblegum);
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 3px dotted var(--mint-green);
+}
+
+.profile-section h3::before {
+    content: "🍬";
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+/* Form text inputs candy styling */
+textarea, input[type="text"], input[type="email"], input[type="password"] {
+    background-color: white !important;
+    color: var(--licorice) !important;
+    border: 3px solid var(--cotton-candy) !important;
+    border-radius: 15px !important;
+}
+
+textarea:focus, input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
+    border-color: var(--candy-pink) !important;
+    box-shadow: 0 0 0 0.25rem rgba(255, 112, 166, 0.25) !important;
+}

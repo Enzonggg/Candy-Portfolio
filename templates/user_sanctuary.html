@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}{{ user.username }}'s Sanctuary - Haunted Portfolio{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>{{ user.username }}'s Demonic Sanctuary</h1>
+    <a href="{{ url_for('dashboard') }}" class="btn btn-outline-danger">
+        <i class="fas fa-portal-exit"></i> Return to Your Gateway
+    </a>
+</div>
+
+<!-- User's profile information -->
+<div class="card mb-4 border-danger">
+    <div class="card-header bg-dark text-danger">
+        <h3>{{ user.username }}'s Unholy Collection</h3>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Dark Essence</h4>
+                {% if user.about_me %}
+                <p>{{ user.about_me }}</p>
+                {% else %}
+                <p class="text-muted">This soul keeps their secrets hidden.</p>
+                {% endif %}
+            </div>
+            <div class="col-md-6">
+                <h4>Arcane Knowledge</h4>
+                {% if user.tech_stack %}
+                <p>{{ user.tech_stack }}</p>
+                {% else %}
+                <p class="text-muted">Their powers remain a mystery.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Projects Section -->
+<h2 class="mb-3">{{ user.username }}'s Summoned Projects</h2>
+
+{% if projects %}
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for project in projects %}
+    <div class="col">
+        <div class="card h-100 project-card">
+            {% if project.image_filename %}
+            <img src="{{ url_for('static', filename='uploads/' + project.image_filename) }}" class="card-img-top" alt="{{ project.title }}">
+            {% else %}
+            <div class="card-img-top bg-dark text-center py-5">
+                <i class="fas fa-ghost fa-3x text-danger"></i>
+            </div>
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ project.title }}</h5>
+                <p class="card-text">{{ project.description|truncate(100) }}</p>
+                <a href="{{ url_for('view_project', project_id=project.id) }}" class="btn btn-danger">Examine</a>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Conjured on {{ project.date_posted.strftime('%B %d, %Y') }}</small>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="alert alert-dark">
+    <p>This soul has not yet unleashed any creations upon the world.</p>
+</div>
+{% endif %}
+
+<style>
+    .project-card {
+        transition: all 0.3s ease;
+    }
+    
+    .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(138, 3, 3, 0.7);
+    }
+</style>
+{% endblock %}

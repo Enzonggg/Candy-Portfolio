@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+
+{% block title %}Dark Essence - {{ user.username }}{% endblock %}
+
+{% block content %}
+<div class="card border-danger mb-4">
+    <div class="card-header bg-dark text-danger d-flex justify-content-between align-items-center">
+        <h1 class="mb-0">{{ user.username }}'s Dark Essence</h1>
+        <a href="{{ url_for('edit_profile') }}" class="btn btn-danger">Alter Your Essence</a>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <!-- Personal Identification Section -->
+                <div class="profile-section mb-4">
+                    <h3 class="text-danger">Personal Identification</h3>
+                    <div class="dark-box">
+                        <p><strong>Full Name:</strong> 
+                            {% if user.full_name %}
+                                {{ user.full_name }}
+                            {% else %}
+                                <span class="text-muted">Unnamed</span>
+                            {% endif %}
+                        </p>
+                        
+                        <p><strong>Student ID:</strong> 
+                            {% if user.student_id %}
+                                {{ user.student_id }}
+                            {% else %}
+                                <span class="text-muted">Unregistered</span>
+                            {% endif %}
+                        </p>
+                        
+                        <p><strong>Section:</strong> 
+                            {% if user.section %}
+                                {{ user.section }}
+                            {% else %}
+                                <span class="text-muted">Unassigned</span>
+                            {% endif %}
+                        </p>
+                        
+                        <p><strong>Email:</strong> {{ user.email }}</p>
+                    </div>
+                </div>
+                
+                <div class="profile-section mb-4">
+                    <h3 class="text-danger">Forbidden Knowledge</h3>
+                    <div class="dark-box">
+                        {% if user.about_me %}
+                            <p>{{ user.about_me|nl2br|safe }}</p>
+                        {% else %}
+                            <p class="text-muted">Your dark secrets remain unwritten...</p>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <div class="profile-section mb-4">
+                    <h3 class="text-danger">Unholy Talents</h3>
+                    <div class="dark-box">
+                        {% if user.tech_stack %}
+                            <p>{{ user.tech_stack|nl2br|safe }}</p>
+                        {% else %}
+                            <p class="text-muted">Your arcane abilities remain hidden...</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <!-- Mortal Details Section -->
+                <div class="profile-section mb-4">
+                    <h3 class="text-danger">Mortal Details</h3>
+                    <div class="dark-box">
+                        <p><strong>Age:</strong> 
+                            {% if user.age %}
+                                {{ user.age }}
+                            {% else %}
+                                <span class="text-muted">Ageless</span>
+                            {% endif %}
+                        </p>
+                        
+                        <p><strong>Gender:</strong> 
+                            {% if user.gender %}
+                                {{ user.gender }}
+                            {% else %}
+                                <span class="text-muted">Unknown</span>
+                            {% endif %}
+                        </p>
+                        
+                        <p><strong>Birth Date:</strong> 
+                            {% if user.birthdate %}
+                                {{ user.birthdate }}
+                            {% else %}
+                                <span class="text-muted">Lost to time</span>
+                            {% endif %}
+                        </p>
+                        
+                        <p><strong>Occupation:</strong> 
+                            {% if user.occupation %}
+                                {{ user.occupation }}
+                            {% else %}
+                                <span class="text-muted">Wandering soul</span>
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Haunting Grounds Section -->
+                <div class="profile-section mb-4">
+                    <h3 class="text-danger">Haunting Grounds</h3>
+                    <div class="dark-box">
+                        <p><strong>Location:</strong> 
+                            {% if user.location %}
+                                {{ user.location }}
+                            {% else %}
+                                <span class="text-muted">Nowhere and everywhere</span>
+                            {% endif %}
+                        </p>
+                        
+                        <p><strong>Address:</strong> 
+                            {% if user.address %}
+                                {{ user.address|nl2br|safe }}
+                            {% else %}
+                                <span class="text-muted">No fixed abode</span>
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Contact Section -->
+                <div class="profile-section mb-4">
+                    <h3 class="text-danger">Contact Rituals</h3>
+                    <div class="dark-box">
+                        <p><strong>Communion Methods:</strong></p>
+                        {% if user.contact_info %}
+                            <p>{{ user.contact_info|nl2br|safe }}</p>
+                        {% else %}
+                            <p class="text-muted">No means of contact revealed...</p>
+                        {% endif %}
+                        
+                        <p><strong>Ethereal Networks:</strong></p>
+                        {% if user.social_media %}
+                            <p>{{ user.social_media|nl2br|safe }}</p>
+                        {% else %}
+                            <p class="text-muted">Your spectral connections remain hidden...</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center">
+        <a href="{{ url_for('dashboard') }}" class="btn btn-primary">Return to Sanctuary</a>
+    </div>
+</div>
+
+<style>
+    .dark-box {
+        background-color: rgba(40, 40, 40, 0.7);
+        border-left: 3px solid #8a0303;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .profile-section h3 {
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+    
+    .dark-box strong {
+        color: #b8b86b;
+        letter-spacing: 0.5px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+</style>
+{% endblock %}
